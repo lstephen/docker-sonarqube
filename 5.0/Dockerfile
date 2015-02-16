@@ -14,8 +14,6 @@ RUN ln -s ${SONARQUBE_HOME}/bin/linux-x86-64/sonar.sh /usr/bin/sonar.sh
 COPY sonar.properties ${SONARQUBE_HOME}/conf/sonar.properties
 
 EXPOSE 9000
-VOLUME ${SONARQUBE_HOME}/logs
-
 CMD ["sonar.sh", "console"]
 
 
