@@ -13,6 +13,8 @@ RUN ln -s ${SONARQUBE_HOME}/bin/linux-x86-64/sonar.sh /usr/bin/sonar.sh
 
 COPY sonar.properties ${SONARQUBE_HOME}/conf/sonar.properties
 
+RUN ln -sf /dev/stdout ${SONARQUBE_HOME}/logs/sonar.log
+
 EXPOSE 9000
 CMD ["sonar.sh", "console"]
 
