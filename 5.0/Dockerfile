@@ -15,12 +15,11 @@ RUN ln -s ${SONARQUBE_HOME}/bin/linux-x86-64/sonar.sh /usr/bin/sonar.sh
 RUN rm ${SONARQUBE_HOME}/lib/bundled-plugins/*
 RUN curl -L http://repository.codehaus.org/org/codehaus/sonar-plugins/java/sonar-java-plugin/2.9.1/sonar-java-plugin-2.9.1.jar -o ${SONARQUBE_HOME}/lib/bundled-plugins/sonar-java-plugin-2.9.1.jar
 
-VOLUME ${SONARQUBE_HOME}/extensions/plugins
+RUN rm -rf ${SONARQUBE_HOME}/extensions/plugins && ln -s ${SONARQUBE_HOME}/lib/bundled-plugins ${SONARQUBE_HOME}/extensions/plugins
 
 COPY sonar.properties ${SONARQUBE_HOME}/conf/sonar.properties
 
 RUN ln -sf /dev/stdout ${SONARQUBE_HOME}/logs/sonar.log
-
 EXPOSE 9000
 CMD ["sonar.sh", "console"]
 
