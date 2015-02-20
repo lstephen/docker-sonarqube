@@ -1,4 +1,4 @@
-FROM java:8-jre
+FROM java:8-jdk
 MAINTAINER Levi Stephen <levi.stephen@gmail.com>
 
 ENV SONARQUBE_HOME /opt/sonarqube
